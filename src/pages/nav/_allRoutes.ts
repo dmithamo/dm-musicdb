@@ -1,15 +1,26 @@
 import { FC } from 'react';
 import DefaultLayout from '../../components/DefaultLayout';
-import Logo from '../../components/Logo';
+import NotFoundPage from '../../components/NotFoundPage';
 import Homepage from '../Homepage';
 
-export type Route = {
+export type RouteType = {
   label: string | FC;
   path: string;
   component: FC;
   layout: FC<any>;
 };
 
-export const ALL_ROUTES: Route[] = [
-  { label: Logo, path: '/', layout: DefaultLayout, component: Homepage },
+export const ALL_ROUTES: RouteType[] = [
+  {
+    label: 'home',
+    path: '/',
+    layout: DefaultLayout,
+    component: Homepage,
+  },
+  {
+    label: 'Not found',
+    path: '*',
+    layout: DefaultLayout,
+    component: NotFoundPage,
+  },
 ];

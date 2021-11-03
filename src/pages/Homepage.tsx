@@ -7,7 +7,16 @@ const Homepage: React.FC = () => {
   const searchResults: SearchResultType[] = [];
 
   if (searchResults.length === 0) {
-    return <Box>Search for something</Box>;
+    return (
+      <Box
+        height="100vh"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+      >
+        Search for something
+      </Box>
+    );
   }
 
   return (

@@ -1,8 +1,8 @@
-import React from "react";
-import PlaceholderPage from "./components/PlaceholderPage";
+import React from 'react';
+import Routes from './pages/nav/Routes';
 
 function App() {
-  return <PlaceholderPage />;
+  return <Routes />;
 }
 
 export default App;
