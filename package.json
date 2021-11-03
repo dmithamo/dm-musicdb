@@ -1,0 +1,36 @@
+{
+  "name": "musicdb-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "node-sass": "^4.11.0",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
+    "react-scripts": "2.1.5"
+  },
+  "scripts": {
+    "prestart": "npm install",
+    "start": "HOST=0.0.0.0 && PORT=8000 && ./node_modules/.bin/react-scripts start",
+    "build": "./node_modules/.bin/react-scripts build",
+    "pretest": "npm install",
+    "test": "rm -rf ./junit.xml && ./node_modules/.bin/react-scripts test --verbose --env=jsdom --reporters=default --reporters=jest-junit",
+    "eject": "./node_modules/.bin/react-scripts eject"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.9.1",
+    "expect": "^24.1.0",
+    "jest-junit": "^6.3.0",
+    "react-test-renderer": "^16.8.2"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
