@@ -1,4 +1,5 @@
 import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 import { isEmpty } from 'lodash';
 import React from 'react';
 import SearchResult from '../../components/SearchResult';
@@ -36,10 +37,14 @@ const Homepage: React.FC = () => {
   }
 
   return (
-    <Box>
-      {(data?.data as SearchResultType[]).map((r) => (
-        <SearchResult result={r} />
-      ))}
+    <Box pt={2} pb={2} pl={15} pr={15}>
+      <Grid container spacing={10}>
+        {(data?.data as SearchResultType[]).map((r) => (
+          <Grid xs={12} md={3} item>
+            <SearchResult result={r} />
+          </Grid>
+        ))}
+      </Grid>
     </Box>
   );
 };
