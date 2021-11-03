@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import DefaultLayout from '../../components/DefaultLayout';
 import NotFoundPage from '../../components/NotFoundPage';
-import Homepage from '../Homepage';
+import Homepage from '../search-deezer/SearchDeezer';
 
 export type RouteType = {
   label: string | FC;
