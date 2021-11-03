@@ -7,7 +7,9 @@ type Props = {
 };
 
 const SearchResult: React.FC<Props> = ({ result }: Props) => (
-  <Box>{JSON.stringify(result)}</Box>
+  <Box p={5}>
+    <pre>{JSON.stringify(result, null, 4)}</pre>
+  </Box>
 );
 
 export default SearchResult;
