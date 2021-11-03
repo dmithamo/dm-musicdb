@@ -1,0 +1,12 @@
+# Ignore artifacts: 
+build
+coverage
+.github/**
+
+# Ignore all HTML files:
+*.html
+
+# Ignore yaml & .md
+*.yml
+*.yaml
+*.md
