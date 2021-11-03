@@ -1,19 +1,8 @@
 import React from "react";
+import PlaceholderPage from "./components/PlaceholderPage";
 
 function App() {
-  return (
-    <div
-      style={{
-        width: "100%",
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      Hello, world
-    </div>
-  );
+  return <PlaceholderPage />;
 }
 
 export default App;
