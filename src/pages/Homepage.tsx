@@ -9,7 +9,7 @@ const Homepage: React.FC = () => {
   if (searchResults.length === 0) {
     return (
       <Box
-        height="100vh"
+        height="90vh"
         display="flex"
         justifyContent="center"
         alignItems="center"
