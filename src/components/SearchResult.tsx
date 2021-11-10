@@ -5,7 +5,9 @@ import Typography from '@mui/material/Typography';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PlaceholderAlbumArt from '../assets/images/placeholder_album.jpg';
+import { setQuery } from '../features/SearchDeezer/searchSlice';
 import { formatTrackLength } from '../utils/formatData';
+import { useAppDispatch } from '../utils/hooks/useState';
 import { SearchResultType } from '../utils/types';
 
 type Props = {
@@ -37,40 +39,50 @@ const StyledAlbumName = styled(Typography)(({ theme }) => ({
   color: theme.palette.grey[700],
 }));
 
-const SearchResult: React.FC<Props> = ({ result }: Props) => (
-  <Paper>
-    <Box
-      display="flex"
-      justifyContent="flex-start"
-      alignItems="flex-start"
-      flexDirection="column"
-    >
-      <img
-        src={result?.album?.cover_big || PlaceholderAlbumArt}
-        alt="Album art"
-        width="100%"
-        height="auto"
-      />
+const SearchResult: React.FC<Props> = ({ result }: Props) => {
+  const dispatch = useAppDispatch();
+  const handleResetQuery = () => {
+    dispatch(setQuery(''));
+  };
 
-      <Box flexGrow={1} minHeight={120} height="auto" p={2} width="100%">
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
+  return (
+    <Paper>
+      <Box
+        display="flex"
+        justifyContent="flex-start"
+        alignItems="flex-start"
+        flexDirection="column"
+      >
+        <img
+          src={result?.album?.cover_big || PlaceholderAlbumArt}
+          alt="Album art"
           width="100%"
-        >
-          <StyledTrackTitle>{result?.title}</StyledTrackTitle>
-          <StyledTrackLength>
-            {formatTrackLength(result?.duration || 0)}
-          </StyledTrackLength>
+          height="auto"
+        />
+
+        <Box flexGrow={1} minHeight={120} height="auto" p={2} width="100%">
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+            width="100%"
+          >
+            <StyledTrackTitle>{result?.title}</StyledTrackTitle>
+            <StyledTrackLength>
+              {formatTrackLength(result?.duration || 0)}
+            </StyledTrackLength>
+          </Box>
+          <StyledArtistName
+            onClick={handleResetQuery}
+            to={`/artist/${result?.artist?.id}`}
+          >
+            {result?.artist?.name}
+          </StyledArtistName>
+          <StyledAlbumName>{result?.album?.title}</StyledAlbumName>
         </Box>
-        <StyledArtistName to={`/artist/${result?.artist?.id}`}>
-          {result?.artist?.name}
-        </StyledArtistName>
-        <StyledAlbumName>{result?.album?.title}</StyledAlbumName>
       </Box>
-    </Box>
-  </Paper>
-);
+    </Paper>
+  );
+};
 
 export default SearchResult;

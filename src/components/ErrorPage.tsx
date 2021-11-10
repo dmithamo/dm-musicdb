@@ -1,3 +1,4 @@
+import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import React from 'react';
 
@@ -15,7 +16,7 @@ const ErrorPage: React.FC<Props> = ({ error }: Props) => (
     justifyContent="center"
     alignItems="center"
   >
-    {error}
+    <Alert severity="error">{error?.message}</Alert>
   </Box>
 );
 
