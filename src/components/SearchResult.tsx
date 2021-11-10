@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import PlaceholderAlbumArt from '../assets/images/placeholder_album.jpg';
 import { setQuery } from '../features/SearchDeezer/searchSlice';
 import { formatTrackLength } from '../utils/formatData';
@@ -14,35 +14,12 @@ type Props = {
   result: SearchResultType;
 };
 
-const StyledTrackTitle = styled(Typography)(({ theme }) => ({
-  fontSize: theme.spacing(2.5),
-  fontWeight: 700,
-  color: theme.palette.common.black,
-}));
-
-const StyledTrackLength = styled(Typography)(({ theme }) => ({
-  fontSize: theme.spacing(2),
-  color: theme.palette.grey[500],
-}));
-
-const StyledArtistName = styled(Link)(({ theme }) => ({
-  fontSize: theme.spacing(2),
-  color: theme.palette.grey[500],
-  textDecoration: 'none',
-  '&:hover': {
-    textDecoration: 'underline',
-  },
-}));
-
-const StyledAlbumName = styled(Typography)(({ theme }) => ({
-  fontSize: theme.spacing(1.8),
-  color: theme.palette.grey[700],
-}));
-
 const SearchResult: React.FC<Props> = ({ result }: Props) => {
   const dispatch = useAppDispatch();
-  const handleResetQuery = () => {
+  const history = useHistory();
+  const handleClickResult = () => {
     dispatch(setQuery(''));
+    history.push(`/artist/${result?.artist?.id}`);
   };
 
   return (
@@ -72,10 +49,7 @@ const SearchResult: React.FC<Props> = ({ result }: Props) => {
               {formatTrackLength(result?.duration || 0)}
             </StyledTrackLength>
           </Box>
-          <StyledArtistName
-            onClick={handleResetQuery}
-            to={`/artist/${result?.artist?.id}`}
-          >
+          <StyledArtistName onClick={handleClickResult}>
             {result?.artist?.name}
           </StyledArtistName>
           <StyledAlbumName>{result?.album?.title}</StyledAlbumName>
@@ -84,5 +58,31 @@ const SearchResult: React.FC<Props> = ({ result }: Props) => {
     </Paper>
   );
 };
+
+const StyledTrackTitle = styled(Typography)(({ theme }) => ({
+  fontSize: theme.spacing(2.5),
+  fontWeight: 700,
+  color: theme.palette.common.black,
+}));
+
+const StyledTrackLength = styled(Typography)(({ theme }) => ({
+  fontSize: theme.spacing(2),
+  color: theme.palette.grey[500],
+}));
+
+const StyledArtistName = styled(Typography)(({ theme }) => ({
+  cursor: 'pointer',
+  fontSize: theme.spacing(2),
+  color: theme.palette.grey[500],
+  textDecoration: 'none',
+  '&:hover': {
+    textDecoration: 'underline',
+  },
+}));
+
+const StyledAlbumName = styled(Typography)(({ theme }) => ({
+  fontSize: theme.spacing(1.8),
+  color: theme.palette.grey[700],
+}));
 
 export default SearchResult;

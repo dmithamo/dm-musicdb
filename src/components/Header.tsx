@@ -10,7 +10,7 @@ import Searchbar from './Searchbar';
 const Header: React.FC = () => {
   const dispatch = useAppDispatch();
 
-  const { query } = useAppSelector((state: RootState) => state.homepage);
+  const { query } = useAppSelector((state: RootState) => state.search);
   const handleSearch = (value: string) => {
     dispatch(setQuery(value));
   };

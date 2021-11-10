@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import search from '../SearchDeezer/searchSlice';
 
-export const store = configureStore({ reducer: { homepage: search } });
+export const store = configureStore({ reducer: { search } });
 
 // utils
 export type RootState = ReturnType<typeof store.getState>;

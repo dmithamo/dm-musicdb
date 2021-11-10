@@ -15,7 +15,7 @@ import { RootState } from '../store/store';
 
 const ArtistHomepage: React.FC = () => {
   const { artistID } = useParams<{ artistID: string }>();
-  const { query } = useAppSelector((state: RootState) => state.homepage);
+  const { query } = useAppSelector((state: RootState) => state.search);
   const history = useHistory();
 
   // auto-redirect to homepage on search
