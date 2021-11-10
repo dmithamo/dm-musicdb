@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2661f971-43d0-4b4a-820d-6cc5cea94950/deploy-status)](https://app.netlify.com/sites/dm-musicdb/deploys)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
