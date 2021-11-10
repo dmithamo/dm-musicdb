@@ -1,7 +1,6 @@
 import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { isEmpty } from 'lodash';
 import React from 'react';
 import ErrorPage from '../../components/ErrorPage';
 import LoadingSpinner from '../../components/LoadingSpinner';
@@ -30,7 +29,20 @@ const SearchDeezer: React.FC = () => {
     <ErrorPage error={error} />;
   }
 
-  return isSuccess && !isEmpty(data) ? (
+  if (!query) {
+    return (
+      <Box
+        height="90vh"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+      >
+        Search for something up above
+      </Box>
+    );
+  }
+
+  return isSuccess ? (
     <Box pt={2} pb={2} pl={15} pr={15}>
       <Grid container spacing={10}>
         {(data?.data as SearchResultType[]).map((r) => (
@@ -41,7 +53,7 @@ const SearchDeezer: React.FC = () => {
       </Grid>
     </Box>
   ) : (
-    <Alert severity="error">No results found</Alert>
+    <Alert severity="error">Unable to search</Alert>
   );
 };
 
