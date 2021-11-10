@@ -2,7 +2,6 @@ import { styled } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
-import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
@@ -38,7 +37,7 @@ const TrackList: React.FC<Props> = ({ url }: Props) => {
       <StyledTrackListHeader>Top tracks</StyledTrackListHeader>
       {isSuccess && data?.total !== 0 ? (
         <Box>
-          <List sx={{ width: 800 }}>
+          <StyledList>
             {(data?.data as any[]).map((t) => (
               <StyledTrack>
                 <ListItem disablePadding>
@@ -60,7 +59,7 @@ const TrackList: React.FC<Props> = ({ url }: Props) => {
                 <ListItemText secondary={formatTrackLength(t?.duration)} />
               </StyledTrack>
             ))}
-          </List>
+          </StyledList>
         </Box>
       ) : (
         <Alert severity="error">No top tracks found for this artist</Alert>
@@ -68,6 +67,18 @@ const TrackList: React.FC<Props> = ({ url }: Props) => {
     </Box>
   );
 };
+
+const StyledList = styled(Paper)(({ theme }) => ({
+  [theme.breakpoints.down('md')]: {
+    width: '100%',
+  },
+  [theme.breakpoints.up('md')]: {
+    width: '90%',
+  },
+  [theme.breakpoints.up('lg')]: {
+    width: '50%',
+  },
+}));
 
 const StyledTrack = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(2),

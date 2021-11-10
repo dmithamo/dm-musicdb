@@ -40,12 +40,12 @@ const ArtistHomepage: React.FC = () => {
     <Box p={2}>
       <StyledPageHeader>{`${data?.name}'s page`}</StyledPageHeader>
       {isSuccess ? (
-        <Box display="flex" justifyContent="flex-start" alignItems="flex-start">
+        <StyledWrapper>
           <StyledArtistMeta>
             <img
               src={data?.picture_big || PlaceholderAlbumArt}
               alt="Artist art"
-              width="100%"
+              width={300}
               height="auto"
             />
             <StyledArtistName>{data?.name}</StyledArtistName>
@@ -53,13 +53,22 @@ const ArtistHomepage: React.FC = () => {
           <Box flex={1}>
             <TrackList url={`/artist/${artistID}/top?limit=50`} />
           </Box>
-        </Box>
+        </StyledWrapper>
       ) : (
         <Alert severity="error">Unable to fetch artist</Alert>
       )}
     </Box>
   );
 };
+
+const StyledWrapper = styled(Box)(({ theme }) => ({
+  display: 'grid',
+  gridTemplateColumns: '300px 1fr',
+  gridGap: theme.spacing(4),
+  [theme.breakpoints.down('md')]: {
+    gridTemplateColumns: '1fr',
+  },
+}));
 
 const StyledPageHeader = styled(Typography)(({ theme }) => ({
   padding: theme.spacing(0, 0, 4, 0),
@@ -73,7 +82,8 @@ const StyledArtistMeta = styled(Paper)(({ theme }) => ({
   justifyContent: 'flex-start',
   alignItems: 'flex-start',
   flexDirection: 'column',
-  height: theme.spacing(75),
+  height: 'fit-content',
+  width: 'fit-content',
   marginRight: theme.spacing(8),
 }));
 
