@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import DefaultLayout from '../../components/DefaultLayout';
 import NotFoundPage from '../../components/NotFoundPage';
-import Homepage from '../search-deezer/SearchDeezer';
+import ArtistHomepage from '../ArtistHomepage';
+import SearchDeezer from '../SearchDeezer';
 
 export type RouteType = {
   label: string | FC;
@@ -15,7 +16,13 @@ export const ALL_ROUTES: RouteType[] = [
     label: 'home',
     path: '/',
     layout: DefaultLayout,
-    component: Homepage,
+    component: SearchDeezer,
+  },
+  {
+    label: 'home',
+    path: '/artist/:artistID',
+    layout: DefaultLayout,
+    component: ArtistHomepage,
   },
   {
     label: 'Not found',

@@ -2,13 +2,14 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { isEmpty } from 'lodash';
 import React from 'react';
+import LoadingSpinner from '../../components/LoadingSpinner';
 import SearchResult from '../../components/SearchResult';
 import useFetch from '../../utils/hooks/useFetch';
 import { useAppSelector } from '../../utils/hooks/useState';
 import { SearchResultType } from '../../utils/types';
 import { RootState } from '../store/store';
 
-const Homepage: React.FC = () => {
+const SearchDeezer: React.FC = () => {
   const { query } = useAppSelector((state: RootState) => state.homepage);
 
   const { isLoading, data } = useFetch(
@@ -20,7 +21,7 @@ const Homepage: React.FC = () => {
   );
 
   if (isLoading) {
-    return <>Loading ...</>;
+    return <LoadingSpinner />;
   }
 
   if (isEmpty(data) || !data?.data || isEmpty(data?.data)) {
@@ -49,4 +50,4 @@ const Homepage: React.FC = () => {
   );
 };
 
-export default Homepage;
+export default SearchDeezer;

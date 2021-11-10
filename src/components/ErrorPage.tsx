@@ -1,8 +1,13 @@
 import Box from '@mui/material/Box';
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-const NotFoundPage: React.FC = () => (
+type Props = {
+  error: {
+    message: string;
+    errorCode?: number;
+  };
+};
+const ErrorPage: React.FC<Props> = ({ error }: Props) => (
   <Box
     height="90vh"
     display="flex"
@@ -10,9 +15,8 @@ const NotFoundPage: React.FC = () => (
     justifyContent="center"
     alignItems="center"
   >
-    <>You must be lost</>
-    <Link to="/">Go home</Link>
+    {error}
   </Box>
 );
 
-export default NotFoundPage;
+export default ErrorPage;

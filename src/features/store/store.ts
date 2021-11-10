@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import search from '../search-deezer/searchSlice';
+import search from '../SearchDeezer/searchSlice';
 
 export const store = configureStore({ reducer: { homepage: search } });
 
