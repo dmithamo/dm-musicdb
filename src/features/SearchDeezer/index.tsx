@@ -30,20 +30,7 @@ const SearchDeezer: React.FC = () => {
     <ErrorPage error={error} />;
   }
 
-  if (isEmpty(data) || !data?.data || isEmpty(data?.data)) {
-    return (
-      <Box
-        height="90vh"
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-      >
-        Search for something
-      </Box>
-    );
-  }
-
-  return isSuccess ? (
+  return isSuccess && !isEmpty(data) ? (
     <Box pt={2} pb={2} pl={15} pr={15}>
       <Grid container spacing={10}>
         {(data?.data as SearchResultType[]).map((r) => (
@@ -54,7 +41,7 @@ const SearchDeezer: React.FC = () => {
       </Grid>
     </Box>
   ) : (
-    <Alert severity="error">Unable to search</Alert>
+    <Alert severity="error">No results found</Alert>
   );
 };
 

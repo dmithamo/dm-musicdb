@@ -1,7 +1,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 
 const api: AxiosInstance = axios.create({
-  baseURL: `https://cors-anywhere.herokuapp.com/${
+  baseURL: `http://localhost:8080/${
     process.env.REACT_APP_DEEZER_BASE_API_URL || ''
   }`,
   headers: {
